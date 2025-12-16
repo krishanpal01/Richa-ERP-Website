@@ -1,0 +1,209 @@
+/*
+  Basic, modern CSS starter
+  - Mobile-first, responsive
+  - Light/Dark aware (prefers-color-scheme)
+  - Custom properties for quick theming
+*/
+
+/* 1) Modern CSS reset */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html:focus-within { scroll-behavior: smooth; }
+html, body { height: 100%; }
+img, picture, svg, video { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+
+/* 2) Design tokens */
+:root {
+  --bg: #0f1221;
+  --surface: #151935;
+  --surface-2: #0c0f20;
+  --text: #e8e9f0;
+  --muted: #b5b9d6;
+  --primary: #635bff; /* accent */
+  --primary-contrast: #ffffff;
+  --card: #131735;
+  --border: #2a2f55;
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-soft: 0 6px 16px rgba(0,0,0,0.25);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --container: 1100px;
+
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fcfcff;
+    --surface: #ffffff;
+    --surface-2: #f6f7ff;
+    --text: #101322;
+    --muted: #4b516d;
+    --card: #ffffff;
+    --border: #e6e8f5;
+    --shadow: 0 12px 28px rgba(16, 19, 34, 0.08);
+    --shadow-soft: 0 8px 20px rgba(16, 19, 34, 0.06);
+  }
+}
+
+/* 3) Base styles */
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(1400px 700px at 10% -10%, rgba(99,91,255,0.22), transparent 60%),
+              radial-gradient(1200px 600px at 100% 10%, rgba(0,196,255,0.12), transparent 50%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.narrow { max-width: 800px; }
+.small { font-size: .875rem; }
+.muted { color: var(--muted); }
+.lead  { font-size: 1.175rem; color: var(--muted); }
+.stack { display: flex; flex-direction: column; }
+.gap-2 { gap: var(--space-5); }
+.gap-3 { gap: var(--space-6); }
+.grid-2 { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
+@media (min-width: 860px) { .grid-2 { grid-template-columns: 1.15fr .85fr; align-items: center; } }
+
+.section { padding: var(--space-8) 0; }
+.section.alt { background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02) 30%, transparent 70%); }
+.section-header { text-align: center; margin-bottom: var(--space-7); }
+.section-header h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin-bottom: var(--space-2); }
+
+/* Page header */
+.page-header { padding-bottom: var(--space-6); }
+.page-title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+.h3 { font-size: 1.125rem; }
+
+/* 4) Header and nav */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  backdrop-filter: saturate(180%) blur(12px);
+  background: color-mix(in oklab, var(--bg), transparent 25%);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-weight: 800; letter-spacing: .2px; color: var(--text); text-decoration: none; }
+
+/* Mobile menu (checkbox hack) */
+.nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.nav-toggle-label { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; }
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; position: relative; transition: .25s ease;
+}
+.nav-toggle-label span::before, .nav-toggle-label span::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-label span::before { top: -7px; }
+.nav-toggle-label span::after  { top: 7px; }
+
+.site-nav { position: fixed; inset: 64px 0 auto 0; background: var(--surface-2); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: .25s ease; box-shadow: var(--shadow-soft); }
+.site-nav ul { list-style: none; padding: var(--space-6); display: grid; gap: var(--space-4); }
+.site-nav a { color: var(--text); text-decoration: none; padding: .5rem .25rem; border-radius: 8px; }
+.site-nav a:hover { background: color-mix(in oklab, var(--primary), transparent 85%); }
+
+.nav-toggle:checked ~ .site-nav { transform: translateY(0); opacity: 1; visibility: visible; }
+.nav-toggle:checked + .nav-toggle-label span { background: transparent; }
+.nav-toggle:checked + .nav-toggle-label span::before { top: 0; transform: rotate(45deg); }
+.nav-toggle:checked + .nav-toggle-label span::after { top: 0; transform: rotate(-45deg); }
+
+@media (min-width: 900px) {
+  .nav-toggle-label { display: none; }
+  .site-nav { position: static; inset: auto; background: transparent; transform: none; opacity: 1; visibility: visible; box-shadow: none; }
+  .site-nav ul { display: flex; gap: var(--space-5); padding: 0; }
+}
+
+/* 5) Hero */
+.hero { padding-top: calc(var(--space-8) + 10vh); padding-bottom: calc(var(--space-8) + 6vh); }
+.hero-title { font-size: clamp(2rem, 2rem + 3vw, 3.25rem); line-height: 1.1; }
+.hero .actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.hero-art {
+  height: 320px; border-radius: var(--radius); background:
+    radial-gradient(200px 200px at 20% 30%, rgba(99,91,255,0.35), transparent 60%),
+    radial-gradient(240px 160px at 80% 70%, rgba(0,196,255,0.25), transparent 60%),
+    linear-gradient(135deg, color-mix(in oklab, var(--surface), #222 10%), var(--surface));
+  box-shadow: var(--shadow);
+}
+
+/* 6) Cards */
+.cards { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+@media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+.card { background: var(--card); padding: var(--space-6); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-soft); }
+.card h3 { margin-bottom: var(--space-2); font-size: 1.125rem; }
+
+/* KPI grid */
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+@media (min-width: 860px) { .kpis { grid-template-columns: repeat(4, 1fr); } }
+.kpi h3 { font-size: 1.5rem; margin: .25rem 0 .5rem; }
+
+/* 7) Buttons */
+.btn { --b: var(--primary); --c: var(--primary-contrast); display: inline-block; text-decoration: none; font-weight: 600; border-radius: 999px; padding: .75rem 1.05rem; border: 1px solid color-mix(in oklab, var(--b), black 10%); transition: transform .06s ease, background .2s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn.primary { background: var(--b); color: var(--c); box-shadow: 0 8px 20px color-mix(in oklab, var(--b), transparent 70%); }
+.btn.ghost { background: transparent; color: var(--text); border-color: var(--border); }
+.btn.ghost:hover { background: color-mix(in oklab, var(--primary), transparent 90%); }
+.btn.small { padding: .45rem .75rem; font-size: .9rem; }
+
+/* 8) Contact */
+.contact-panel { background: var(--card); padding: var(--space-6); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-soft); text-align: center; }
+
+/* 9) Footer */
+.site-footer { padding: var(--space-7) 0; border-top: 1px solid var(--border); background: color-mix(in oklab, var(--bg), transparent 10%); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.back-to-top { color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: .4rem .75rem; border-radius: 999px; }
+.back-to-top:hover { color: var(--text); }
+
+/* 10) Accessibility helpers */
+.skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.skip-link:focus { left: 8px; top: 8px; width: auto; height: auto; background: var(--primary); color: var(--primary-contrast); padding: .5rem .75rem; border-radius: 8px; box-shadow: var(--shadow-soft); }
+
+/* 11) Tables */
+.table-wrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { text-align: left; padding: .75rem .75rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.table thead th { font-size: .85rem; color: var(--muted); letter-spacing: .2px; text-transform: uppercase; }
+.table tbody tr:hover { background: color-mix(in oklab, var(--primary), transparent 94%); }
+
+/* 12) Badges */
+.badge { display: inline-block; padding: .25rem .5rem; border-radius: 999px; font-size: .75rem; border: 1px solid var(--border); }
+.badge.success { background: color-mix(in oklab, #2ecc71, transparent 85%); border-color: color-mix(in oklab, #2ecc71, transparent 70%); }
+.badge.warning { background: color-mix(in oklab, #f1c40f, transparent 85%); border-color: color-mix(in oklab, #f1c40f, transparent 70%); }
+.badge.danger { background: color-mix(in oklab, #e74c3c, transparent 85%); border-color: color-mix(in oklab, #e74c3c, transparent 70%); }
+.badge.neutral { background: color-mix(in oklab, var(--muted), transparent 85%); border-color: color-mix(in oklab, var(--muted), transparent 70%); }
+
+/* 13) Forms */
+.form-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
+@media (min-width: 720px) { .form-grid { grid-template-columns: repeat(2, 1fr); } }
+.form-field { display: grid; gap: .4rem; }
+.form-field label { font-weight: 600; font-size: .9rem; }
+input[type="text"], input[type="email"], input[type="number"], input[type="tel"], select, textarea {
+  background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: .65rem .75rem; box-shadow: inset 0 1px 0 rgba(0,0,0,0.05);
+}
+textarea { min-height: 120px; }
+.form-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+/* 14) Table header bar */
+.table-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+
+/* 15) Switch (settings) */
+.switch { display: flex; align-items: center; gap: .6rem; }
+.switch input[type="checkbox"] { width: 1.1rem; height: 1.1rem; }

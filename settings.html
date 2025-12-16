@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ERP - Settings</title>
+    <meta name="description" content="Static ERP settings (HTML/CSS only)." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="theme-color" content="#635bff" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+  <a class="logo" href="index.html">ERP</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu" />
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html" aria-current="page">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section page-header">
+        <div class="container">
+          <h1 class="page-title">Settings</h1>
+          <p class="muted">These controls are purely visual in this static prototype.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="card">
+            <h2 class="h3">Preferences</h2>
+            <form class="stack gap-2" action="#" method="post" style="margin-top: 1rem;">
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span>Enable email notifications</span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" />
+                <span>Compact table rows</span>
+              </label>
+              <label class="switch">
+                <input type="checkbox" />
+                <span>Use system light/dark theme</span>
+              </label>
+              <div class="form-actions">
+                <button class="btn primary" type="submit">Save</button>
+                <a class="btn ghost" href="#top">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted small">© <span id="year">2025</span> ERP UI (static).</p>
+        <a class="back-to-top" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

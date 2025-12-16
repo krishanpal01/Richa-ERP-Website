@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ERP - Orders</title>
+    <meta name="description" content="Static ERP orders list (HTML/CSS only)." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="theme-color" content="#635bff" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+  <a class="logo" href="index.html">ERP</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu" />
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html" aria-current="page">Orders</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section page-header">
+        <div class="container">
+          <h1 class="page-title">Orders</h1>
+          <p class="muted">View recent orders and their payment status. Static example with badges.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order #</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>INV-1042</td>
+                  <td>Acme Co.</td>
+                  <td>Dec 15, 2025</td>
+                  <td>$1,280.00</td>
+                  <td><span class="badge success">Paid</span></td>
+                </tr>
+                <tr>
+                  <td>INV-1041</td>
+                  <td>Bright Labs</td>
+                  <td>Dec 15, 2025</td>
+                  <td>$560.00</td>
+                  <td><span class="badge warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>INV-1040</td>
+                  <td>Zen Foods</td>
+                  <td>Dec 14, 2025</td>
+                  <td>$2,420.00</td>
+                  <td><span class="badge danger">Overdue</span></td>
+                </tr>
+                <tr>
+                  <td>INV-1039</td>
+                  <td>North Peak</td>
+                  <td>Dec 13, 2025</td>
+                  <td>$910.00</td>
+                  <td><span class="badge neutral">Draft</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted small">© <span id="year">2025</span> ERP UI (static).</p>
+        <a class="back-to-top" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

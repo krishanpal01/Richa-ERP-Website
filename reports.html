@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ERP - Reports</title>
+    <meta name="description" content="Static ERP reports overview (HTML/CSS only)." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta name="theme-color" content="#635bff" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+  <a class="logo" href="index.html">ERP</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu" />
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="reports.html" aria-current="page">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section page-header">
+        <div class="container">
+          <h1 class="page-title">Reports</h1>
+          <p class="muted">Key metrics cards and a summary list. All data is placeholder.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="kpis">
+            <article class="card kpi">
+              <p class="muted small">Gross Sales (YTD)</p>
+              <h3>$582,300</h3>
+              <span class="badge success">+12.4%</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">COGS (YTD)</p>
+              <h3>$310,950</h3>
+              <span class="badge neutral">53.4%</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">Returns (YTD)</p>
+              <h3>$9,780</h3>
+              <span class="badge warning">+1.1%</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">Net Profit (YTD)</p>
+              <h3>$261,350</h3>
+              <span class="badge success">+18.2%</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow">
+          <div class="card">
+            <h2 class="h3">Summary</h2>
+            <ul class="report-list">
+              <li><strong>Top product:</strong> Mechanical Keyboard — 4,210 units</li>
+              <li><strong>Best month:</strong> November — $92,540 in revenue</li>
+              <li><strong>Average order value:</strong> $156.33</li>
+              <li><strong>Returning customers:</strong> 42%</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted small">© <span id="year">2025</span> ERP UI (static).</p>
+        <a class="back-to-top" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

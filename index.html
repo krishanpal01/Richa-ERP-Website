@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ERP - Arpit</title>
+  <meta name="description" content="Static HTML/CSS ERP UI prototype with dashboard, products, customers, and orders." />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <meta name="theme-color" content="#635bff" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+  <a class="logo" href="index.html" aria-label="ERP Home">ERP Arpit</a>
+
+        <!-- Accessible CSS-only mobile menu toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu" />
+        <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+          <span></span>
+        </label>
+
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html" aria-current="page">Dashboard</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="settings.html">Settings</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section page-header">
+        <div class="container">
+          <h1 class="page-title">Dashboard</h1>
+          <p class="muted">Overview of sales, inventory, and customers.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="kpis">
+            <article class="card kpi">
+              <p class="muted small">Revenue (MTD)</p>
+              <h3>$48,250</h3>
+              <span class="badge success">+8.2%</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">Orders</p>
+              <h3>312</h3>
+              <span class="badge neutral">MTD</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">Low Stock</p>
+              <h3>7</h3>
+              <span class="badge warning">Action needed</span>
+            </article>
+            <article class="card kpi">
+              <p class="muted small">New Customers</p>
+              <h3>52</h3>
+              <span class="badge success">+3.1%</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid-2">
+          <div class="card">
+            <div class="table-header">
+              <h2 class="h3">Recent Orders</h2>
+              <a class="btn ghost small" href="orders.html">View all</a>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INV-1042</td>
+                    <td>Acme Co.</td>
+                    <td>Dec 15</td>
+                    <td>$1,280.00</td>
+                    <td><span class="badge success">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>INV-1041</td>
+                    <td>Bright Labs</td>
+                    <td>Dec 15</td>
+                    <td>$560.00</td>
+                    <td><span class="badge warning">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>INV-1040</td>
+                    <td>Zen Foods</td>
+                    <td>Dec 14</td>
+                    <td>$2,420.00</td>
+                    <td><span class="badge danger">Overdue</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="h3">Quick Actions</h2>
+            <div class="stack gap-2" style="margin-top: .75rem;">
+              <a class="btn primary" href="orders.html">Create Order</a>
+              <a class="btn ghost" href="products.html">Add Product</a>
+              <a class="btn ghost" href="customers.html">Add Customer</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted small">© <span id="year">2025</span> ERP Arpit All rights reserved.</p>
+        <a class="back-to-top" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
